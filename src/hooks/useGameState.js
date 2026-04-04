@@ -1,6 +1,6 @@
 import { useReducer, useEffect, useRef, useCallback } from 'react';
 import questionsData from '../data/questions.json';
-import { playSfx, playBg, stopBg, bgForLevel } from '../utils/soundManager';
+import { playSfx, playBg, stopBg } from '../utils/soundManager';
 
 // ─── MONEY LADDER ────────────────────────────────────────────────────────────
 export const MONEY_LADDER = [
@@ -227,7 +227,7 @@ export function useGameState() {
   // Auto-reveal after dramatic pause when an answer is pending
   useEffect(() => {
     if (state.phase === 'pending') {
-      playSfx('finalAnswer');
+      playSfx('selectAnswer');
       revealTimerRef.current = setTimeout(() => {
         dispatch({ type: 'REVEAL_ANSWER' });
       }, 2200);
@@ -237,14 +237,10 @@ export function useGameState() {
 
   // Sound effects on phase transitions
   useEffect(() => {
-    if (state.phase === 'question') {
-      playBg(bgForLevel(state.currentIndex));
-      playSfx('questionAppear');
-    }
-    if (state.phase === 'correct') playSfx('correct');
-    if (state.phase === 'wrong')   playSfx('wrong');
-    if (state.phase === 'won')     { stopBg(); playSfx('million'); }
-    if (state.phase === 'walkaway') { stopBg(); playSfx('walkAway'); }
+    if (state.phase === 'question') playBg();
+    if (state.phase === 'correct' || state.phase === 'won') playSfx('win');
+    if (state.phase === 'wrong')    playSfx('lose');
+    if (state.phase === 'walkaway') stopBg();
   }, [state.phase, state.currentIndex]);
 
   // ── Actions ──────────────────────────────────────────────────────────────
@@ -252,9 +248,9 @@ export function useGameState() {
   const selectAnswer = useCallback(i => dispatch({ type: 'SELECT_ANSWER', index: i }), []);
   const nextQuestion = useCallback(() => dispatch({ type: 'NEXT_QUESTION' }), []);
   const walkAway     = useCallback(() => dispatch({ type: 'WALK_AWAY' }), []);
-  const useFiftyFifty   = useCallback(() => { playSfx('lifelineUsed'); dispatch({ type: 'USE_FIFTY_FIFTY' }); }, []);
-  const usePhoneAFriend = useCallback(() => { playSfx('phonering'); dispatch({ type: 'USE_PHONE' }); }, []);
-  const useAskAudience  = useCallback(() => { playSfx('lifelineUsed'); dispatch({ type: 'USE_AUDIENCE' }); }, []);
+  const useFiftyFifty   = useCallback(() => dispatch({ type: 'USE_FIFTY_FIFTY' }), []);
+  const usePhoneAFriend = useCallback(() => dispatch({ type: 'USE_PHONE' }), []);
+  const useAskAudience  = useCallback(() => dispatch({ type: 'USE_AUDIENCE' }), []);
   const dismissLifeline = useCallback(() => dispatch({ type: 'DISMISS_LIFELINE' }), []);
   const resetGame       = useCallback(() => { stopBg(); dispatch({ type: 'RESET' }); }, []);
 

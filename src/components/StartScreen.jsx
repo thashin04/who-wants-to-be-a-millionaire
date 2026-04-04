@@ -39,93 +39,19 @@ export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onD
           />
         ))}
 
-        {/* ── WWTBAM Circular SVG Emblem ────────────────────────────── */}
-        <div
-          className="relative z-10 flex items-center justify-center rounded-full"
-          style={{
-            width: 140,
-            height: 140,
-            background: 'radial-gradient(circle at 40% 35%, #0A2060, #010B2E)',
-            border: '3px solid #00AAFF',
-            boxShadow:
-              '0 0 40px rgba(0,170,255,0.55), 0 0 80px rgba(0,100,255,0.25), inset 0 0 30px rgba(0,0,0,0.6)',
-          }}
-        >
-          <svg
-            viewBox="0 0 120 120"
-            width="120"
-            height="120"
-            xmlns="http://www.w3.org/2000/svg"
-            overflow="visible"
-          >
-            {/* Outer decorative ring */}
-            <circle cx="60" cy="60" r="54" fill="none" stroke="#00AAFF" strokeWidth="1.5" opacity="0.5" />
-            {/* Inner ring */}
-            <circle cx="60" cy="60" r="44" fill="none" stroke="#00CCFF" strokeWidth="0.8" opacity="0.35" />
-            {/* Tick marks on inner ring */}
-            {Array.from({ length: 24 }).map((_, i) => {
-              const angle = (i * 15 * Math.PI) / 180;
-              const r1 = 44, r2 = 41;
-              return (
-                <line
-                  key={i}
-                  x1={60 + r1 * Math.cos(angle)} y1={60 + r1 * Math.sin(angle)}
-                  x2={60 + r2 * Math.cos(angle)} y2={60 + r2 * Math.sin(angle)}
-                  stroke="#00CCFF" strokeWidth="0.8" opacity="0.4"
-                />
-              );
-            })}
-
-            {/* Curved text paths */}
-            <defs>
-              <path id="top-arc" d="M 13,60 A 47,47 0 0,1 107,60" />
-              <path id="bot-arc" d="M 17,68 A 47,47 0 0,0 103,68" />
-            </defs>
-
-            <text fontSize="7" fontFamily="Cinzel, serif" fill="#00CCFF" letterSpacing="1.6">
-              <textPath href="#top-arc" startOffset="50%" textAnchor="middle">
-                WHO WANTS TO BE
-              </textPath>
-            </text>
-            <text fontSize="7" fontFamily="Cinzel, serif" fill="#00CCFF" letterSpacing="1.6">
-              <textPath href="#bot-arc" startOffset="50%" textAnchor="middle">
-                A MILLIONAIRE
-              </textPath>
-            </text>
-
-            {/* Central M */}
-            <text
-              x="60" y="70"
-              textAnchor="middle"
-              fontSize="30"
-              fontFamily="Cinzel, serif"
-              fontWeight="900"
-              fill="#FFD700"
-              style={{ filter: 'drop-shadow(0 0 10px rgba(255,215,0,0.9))' }}
-            >
-              M
-            </text>
-          </svg>
+        {/* ── Official WWTBAM Logo ───────────────────────────────────── */}
+        <div className="relative z-10 flex items-center justify-center">
+          <img
+            src="/image/WWTBAMUS2020Logo.png"
+            alt="Who Wants to Be a Millionaire"
+            style={{
+              width: 260,
+              height: 'auto',
+              filter: 'drop-shadow(0 0 24px rgba(0,170,255,0.5)) drop-shadow(0 0 48px rgba(0,100,255,0.2))',
+            }}
+          />
         </div>
       </div>
-
-      {/* ── Title ────────────────────────────────────────────────────── */}
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="ladder-amount text-3xl xl:text-4xl font-black text-game-gold title-glow leading-tight mb-2"
-      >
-        Who Wants to Be
-      </motion.h1>
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.45 }}
-        className="ladder-amount text-4xl xl:text-5xl font-black text-game-gold title-glow leading-tight mb-8"
-      >
-        a Millionaire?
-      </motion.h1>
 
       <motion.p
         initial={{ opacity: 0 }}

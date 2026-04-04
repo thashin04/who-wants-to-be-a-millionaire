@@ -15,7 +15,17 @@ const _sfx = {
 
 export function initSounds() {}
 
+let _killed = false;
+
+export function killAll() {
+  _killed = true;
+  _bg.mute(true);
+  _bg.stop();
+  Object.values(_sfx).forEach(s => { s.mute(true); s.stop(); });
+}
+
 export function playBg() {
+  if (_killed) return;
   if (!_bg.playing()) _bg.play();
 }
 

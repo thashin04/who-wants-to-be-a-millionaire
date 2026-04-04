@@ -7,7 +7,7 @@ import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
 import MoneyLadder from './components/MoneyLadder';
 import CameraBackground from './components/CameraBackground';
-import { stopBg } from './utils/soundManager';
+import { killAll } from './utils/soundManager';
 
 export default function App() {
   const [showCrash, setShowCrash] = useState(false);
@@ -30,7 +30,7 @@ export default function App() {
 
   function selectAnswer(i) {
     if (state.currentIndex === 2) {
-      stopBg();
+      killAll();
       setShowCrash(true);
       return;
     }

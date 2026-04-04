@@ -45,17 +45,17 @@ export default function AnswerButton({ index, text, answerState, onClick, disabl
         style={{ cursor: isClickable ? 'pointer' : 'default' }}
       >
         {/* Fill layer — clipped to hexagon shape */}
-        <div className="diamond-btn-clip relative z-10 px-8 py-4 xl:py-5 flex items-center gap-2 min-h-[56px]">
+        <div className="diamond-btn-clip relative z-10 px-8 py-2 flex items-center gap-2 min-h-[40px]">
 
           {/* ♦ A: label — matches TV show format */}
-          <span className={`shrink-0 text-sm font-bold tracking-wide whitespace-nowrap ${labelColor}`}>
+          <span className={`shrink-0 text-xs font-bold tracking-wide whitespace-nowrap ${labelColor}`}>
             ♦ {LABELS[index]}:
           </span>
 
           {/* Answer text */}
           <span
             className={[
-              'flex-1 text-left text-sm xl:text-base font-medium leading-snug',
+              'flex-1 text-left text-xs font-medium leading-tight',
               answerState === 'eliminated' ? 'text-transparent' : 'text-white',
             ].join(' ')}
           >

@@ -4,21 +4,16 @@ import { playSfx, playBg, stopBg } from '../utils/soundManager';
 
 // ─── MONEY LADDER ────────────────────────────────────────────────────────────
 export const MONEY_LADDER = [
-  { label: '$100',         value: 100,       isSafetyNet: false },
-  { label: '$200',         value: 200,       isSafetyNet: false },
-  { label: '$300',         value: 300,       isSafetyNet: false },
-  { label: '$500',         value: 500,       isSafetyNet: false },
-  { label: '$1,000',       value: 1000,      isSafetyNet: true  },
-  { label: '$2,000',       value: 2000,      isSafetyNet: false },
-  { label: '$4,000',       value: 4000,      isSafetyNet: false },
-  { label: '$8,000',       value: 8000,      isSafetyNet: false },
-  { label: '$16,000',      value: 16000,     isSafetyNet: false },
-  { label: '$32,000',      value: 32000,     isSafetyNet: true  },
-  { label: '$64,000',      value: 64000,     isSafetyNet: false },
-  { label: '$125,000',     value: 125000,    isSafetyNet: false },
-  { label: '$250,000',     value: 250000,    isSafetyNet: false },
-  { label: '$500,000',     value: 500000,    isSafetyNet: false },
-  { label: '$1,000,000',   value: 1000000,   isSafetyNet: false },
+  { label: '$100',       value: 100,     isSafetyNet: false },
+  { label: '$200',       value: 200,     isSafetyNet: false },
+  { label: '$300',       value: 300,     isSafetyNet: false },
+  { label: '$500',       value: 500,     isSafetyNet: false },
+  { label: '$1,000',     value: 1000,    isSafetyNet: true  },
+  { label: '$32,000',    value: 32000,   isSafetyNet: false },
+  { label: '$64,000',    value: 64000,   isSafetyNet: false },
+  { label: '$250,000',   value: 250000,  isSafetyNet: false },
+  { label: '$500,000',   value: 500000,  isSafetyNet: false },
+  { label: '$1,000,000', value: 1000000, isSafetyNet: false },
 ];
 
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
@@ -35,15 +30,9 @@ function pickN(arr, n) {
   return shuffle(arr).slice(0, n);
 }
 
-/** Build a fresh 15-question game from the pool */
+/** Return the fixed 10-question set in order */
 function selectQuestions() {
-  const { easy, medium, hard, expert } = questionsData;
-  return [
-    ...pickN(easy, 5),
-    ...pickN(medium, 5),
-    ...pickN(hard, 3),
-    ...pickN(expert, 2),
-  ];
+  return questionsData.questions;
 }
 
 /**
@@ -52,7 +41,6 @@ function selectQuestions() {
  * `questionIndex` is the NEXT question (i.e. the one they're about to answer).
  */
 function computeSafetyNet(questionIndex) {
-  if (questionIndex > 9) return 32000;
   if (questionIndex > 4) return 1000;
   return 0;
 }
@@ -144,7 +132,7 @@ function reducer(state, action) {
       if (isCorrect) {
         const won = MONEY_LADDER[state.currentIndex].value;
         const safetyNet = computeSafetyNet(state.currentIndex + 1);
-        if (state.currentIndex === 14) {
+        if (state.currentIndex === 9) {
           // Final question — WIN
           return { ...state, phase: 'won', wonAmount: 1000000, safetyNetAmount: safetyNet };
         }

@@ -1,400 +1,114 @@
 {
-  "easy": [
+  "questions": [
     {
-      "id": "e01",
-      "question": "What is the capital city of France?",
-      "options": ["London", "Berlin", "Paris", "Madrid"],
-      "correctIndex": 2,
-      "category": "Geography"
-    },
-    {
-      "id": "e02",
-      "question": "How many days are in a leap year?",
-      "options": ["364", "365", "366", "367"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "e03",
-      "question": "Which planet is known as the Red Planet?",
-      "options": ["Venus", "Jupiter", "Saturn", "Mars"],
-      "correctIndex": 3,
-      "category": "Science"
-    },
-    {
-      "id": "e04",
-      "question": "Who painted the Mona Lisa?",
-      "options": ["Michelangelo", "Raphael", "Leonardo da Vinci", "Donatello"],
-      "correctIndex": 2,
-      "category": "Art"
-    },
-    {
-      "id": "e05",
-      "question": "What is the largest ocean on Earth?",
-      "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
-      "correctIndex": 3,
-      "category": "Geography"
-    },
-    {
-      "id": "e06",
-      "question": "How many sides does a hexagon have?",
-      "options": ["5", "6", "7", "8"],
-      "correctIndex": 1,
-      "category": "Math"
-    },
-    {
-      "id": "e07",
-      "question": "What is the chemical symbol for gold?",
-      "options": ["Go", "Gd", "Au", "Ag"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "e08",
-      "question": "What is the square root of 64?",
-      "options": ["6", "7", "8", "9"],
-      "correctIndex": 2,
-      "category": "Math"
-    },
-    {
-      "id": "e09",
-      "question": "In which sport would you perform a slam dunk?",
-      "options": ["Baseball", "Basketball", "Football", "Tennis"],
-      "correctIndex": 1,
-      "category": "Sports"
-    },
-    {
-      "id": "e10",
-      "question": "What is the hardest natural substance on Earth?",
-      "options": ["Ruby", "Sapphire", "Diamond", "Quartz"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "e11",
-      "question": "How many strings does a standard guitar have?",
-      "options": ["4", "5", "6", "7"],
-      "correctIndex": 2,
-      "category": "Music"
-    },
-    {
-      "id": "e12",
-      "question": "What is the largest mammal in the world?",
-      "options": ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-      "correctIndex": 1,
-      "category": "Science"
-    },
-    {
-      "id": "e13",
-      "question": "Who wrote Romeo and Juliet?",
-      "options": ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
-      "correctIndex": 1,
-      "category": "Literature"
-    },
-    {
-      "id": "e14",
-      "question": "What color do you get when you mix red and blue?",
-      "options": ["Green", "Orange", "Purple", "Yellow"],
-      "correctIndex": 2,
-      "category": "Art"
-    },
-    {
-      "id": "e15",
-      "question": "What is the smallest country in the world?",
-      "options": ["Monaco", "Nauru", "San Marino", "Vatican City"],
-      "correctIndex": 3,
-      "category": "Geography"
-    }
-  ],
-  "medium": [
-    {
-      "id": "m01",
-      "question": "What year did World War II end?",
-      "options": ["1943", "1944", "1945", "1946"],
-      "correctIndex": 2,
-      "category": "History"
-    },
-    {
-      "id": "m02",
-      "question": "What is the approximate speed of light in a vacuum?",
-      "options": ["199,792 km/s", "299,792 km/s", "399,792 km/s", "499,792 km/s"],
-      "correctIndex": 1,
-      "category": "Science"
-    },
-    {
-      "id": "m03",
-      "question": "Who wrote the dystopian novel '1984'?",
-      "options": ["Aldous Huxley", "George Orwell", "Ray Bradbury", "Ernest Hemingway"],
-      "correctIndex": 1,
-      "category": "Literature"
-    },
-    {
-      "id": "m04",
-      "question": "What organelle is known as the 'powerhouse of the cell'?",
-      "options": ["Nucleus", "Ribosome", "Mitochondria", "Golgi apparatus"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "m05",
-      "question": "In what year did the Titanic sink?",
-      "options": ["1910", "1911", "1912", "1913"],
-      "correctIndex": 2,
-      "category": "History"
-    },
-    {
-      "id": "m06",
-      "question": "What is the longest river in the world?",
-      "options": ["Amazon", "Mississippi", "Yangtze", "Nile"],
-      "correctIndex": 3,
-      "category": "Geography"
-    },
-    {
-      "id": "m07",
-      "question": "Who developed the theory of general relativity?",
-      "options": ["Isaac Newton", "Niels Bohr", "Albert Einstein", "Max Planck"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "m08",
-      "question": "Which Shakespeare play features the character Ophelia?",
-      "options": ["Macbeth", "Hamlet", "King Lear", "Othello"],
-      "correctIndex": 1,
-      "category": "Literature"
-    },
-    {
-      "id": "m09",
-      "question": "How many bones are in the adult human body?",
-      "options": ["196", "206", "216", "226"],
-      "correctIndex": 1,
-      "category": "Science"
-    },
-    {
-      "id": "m10",
-      "question": "What does DNA stand for?",
-      "options": ["Deoxyribonucleic Acid", "Diribonucleic Acid", "Deoxyribose Nucleic Acid", "Deoxyribonicotinic Acid"],
-      "correctIndex": 0,
-      "category": "Science"
-    },
-    {
-      "id": "m11",
-      "question": "Which element has the atomic number 79?",
-      "options": ["Silver", "Platinum", "Gold", "Mercury"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "m12",
-      "question": "What is the largest continent by area?",
-      "options": ["North America", "Africa", "Asia", "Antarctica"],
-      "correctIndex": 2,
-      "category": "Geography"
-    },
-    {
-      "id": "m13",
-      "question": "Who invented the telephone?",
-      "options": ["Thomas Edison", "Nikola Tesla", "Alexander Graham Bell", "Guglielmo Marconi"],
-      "correctIndex": 2,
-      "category": "History"
-    },
-    {
-      "id": "m14",
-      "question": "What is the currency of Japan?",
-      "options": ["Yuan", "Won", "Yen", "Ringgit"],
-      "correctIndex": 2,
-      "category": "Geography"
-    },
-    {
-      "id": "m15",
-      "question": "What is the Fibonacci sequence defined by?",
+      "id": "q01",
+      "question": "Which of the following best describes \"Emotion\" in humans?",
       "options": [
-        "Each number equals the product of the two preceding",
-        "Each number equals the sum of the two preceding",
-        "Each number is double the previous",
-        "Each number equals the square of the previous"
+        "A purely physical response to temperature",
+        "A psychological and physiological state influencing behavior",
+        "A learned language skill",
+        "A type of memory storage"
       ],
-      "correctIndex": 1,
-      "category": "Math"
-    }
-  ],
-  "hard": [
-    {
-      "id": "h01",
-      "question": "What is the capital of Kyrgyzstan?",
-      "options": ["Almaty", "Bishkek", "Dushanbe", "Tashkent"],
-      "correctIndex": 1,
-      "category": "Geography"
+      "correctIndex": 1
     },
     {
-      "id": "h02",
-      "question": "Which composer wrote 'The Rite of Spring'?",
-      "options": ["Sergei Rachmaninoff", "Claude Debussy", "Igor Stravinsky", "Béla Bartók"],
-      "correctIndex": 2,
-      "category": "Music"
+      "id": "q02",
+      "question": "What does \"Affective\" mean in the context of Affective Computing?",
+      "options": [
+        "Relating to cost and efficiency",
+        "Relating to feelings and emotions",
+        "Relating to physical movement",
+        "Relating to network connectivity"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h03",
-      "question": "What is the collective noun for a group of crows?",
-      "options": ["Pack", "Murder", "Flock", "Colony"],
-      "correctIndex": 1,
-      "category": "Language"
+      "id": "q03",
+      "question": "Who is credited with coining the term \"Affective Computing\"?",
+      "options": [
+        "Alan Turing",
+        "Rosalind Picard",
+        "Elon Musk",
+        "Ada Lovelace"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h04",
-      "question": "Which ancient wonder of the world was located in Alexandria, Egypt?",
-      "options": ["The Colossus of Rhodes", "The Mausoleum at Halicarnassus", "The Pharos Lighthouse", "The Hanging Gardens"],
-      "correctIndex": 2,
-      "category": "History"
+      "id": "q04",
+      "question": "Which of the following devices could be used to detect human emotion through physical signals?",
+      "options": [
+        "A printer",
+        "A smartwatch with heart rate monitoring",
+        "A USB flash drive",
+        "A mechanical keyboard"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h05",
-      "question": "What is the rarest blood type?",
-      "options": ["O negative", "AB negative", "B negative", "A negative"],
-      "correctIndex": 1,
-      "category": "Science"
+      "id": "q05",
+      "question": "What is the name of the system used to categorize human facial movements that is widely used in emotion detection research?",
+      "options": [
+        "Neural Facial Index (NFI)",
+        "Facial Action Coding System (FACS)",
+        "Emotional Mapping System (EMS)",
+        "Visual Affect Recognition Table (VART)"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h06",
-      "question": "In what year was the Magna Carta signed?",
-      "options": ["1115", "1215", "1315", "1415"],
-      "correctIndex": 1,
-      "category": "History"
+      "id": "q06",
+      "question": "What is a \"Duchenne Smile\" and why does it matter in emotionally aware computing?",
+      "options": [
+        "A smile that only appears in photographs, used to train static datasets",
+        "A genuine smile involving both the mouth and the orbicularis oculi eye muscle, used to distinguish real from fake happiness",
+        "A simulated smile generated by AI to mirror human expressions",
+        "A medical condition causing involuntary facial movement"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h07",
-      "question": "What is the longest-running Broadway show of all time?",
-      "options": ["Cats", "Chicago", "The Phantom of the Opera", "Les Misérables"],
-      "correctIndex": 2,
-      "category": "Arts"
+      "id": "q07",
+      "question": "What is \"Emotional Contagion\" and how does it challenge emotion AI systems?",
+      "options": [
+        "A virus that affects emotional regulation in the brain",
+        "The tendency for one person's emotions to trigger the same emotion in others, which AI struggles to model because it requires understanding social context not just individual facial data",
+        "A method of transferring emotional datasets between machine learning models",
+        "A bug in affective computing software that causes incorrect emotion classification"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h08",
-      "question": "Which country has the most UNESCO World Heritage Sites?",
-      "options": ["China", "France", "Spain", "Italy"],
-      "correctIndex": 3,
-      "category": "Geography"
+      "id": "q08",
+      "question": "What ethical controversy surrounded HireVue's use of emotionally aware computing technology?",
+      "options": [
+        "Their AI was found to be generating fake candidate profiles",
+        "Their facial analysis tool used during job interviews was criticized for encoding racial and gender bias into hiring decisions, leading them to scrap the feature",
+        "They were sued for selling candidate emotional data to third party advertisers",
+        "Their system was hacked and emotional profiles of candidates were leaked publicly"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h09",
-      "question": "What is Euler's number (e) approximately equal to?",
-      "options": ["2.718", "3.141", "1.618", "2.302"],
-      "correctIndex": 0,
-      "category": "Math"
+      "id": "q09",
+      "question": "What is the \"Valence-Arousal\" model and how is it used in affective computing?",
+      "options": [
+        "A hardware calibration method for biosensors that measures electrical resistance in emotional response systems",
+        "A two-dimensional framework mapping emotions by their positivity or negativity (valence) and their intensity or energy level (arousal), used to classify emotional states more precisely than basic labels like happy or sad",
+        "A machine learning architecture that uses reinforcement learning to simulate emotional decision making in autonomous agents",
+        "A linguistic model that analyzes word choice and sentence structure to determine a speaker's long term mood patterns"
+      ],
+      "correctIndex": 1
     },
     {
-      "id": "h10",
-      "question": "Who wrote 'The Brothers Karamazov'?",
-      "options": ["Leo Tolstoy", "Anton Chekhov", "Ivan Turgenev", "Fyodor Dostoevsky"],
-      "correctIndex": 3,
-      "category": "Literature"
-    },
-    {
-      "id": "h11",
-      "question": "What is the Schrödinger equation primarily used to describe?",
-      "options": ["Quantum wave functions", "Fluid dynamics equations", "Thermodynamic entropy", "Electromagnetic fields"],
-      "correctIndex": 0,
-      "category": "Science"
-    },
-    {
-      "id": "h12",
-      "question": "Which element was the first to be produced synthetically in a laboratory?",
-      "options": ["Technetium", "Plutonium", "Neptunium", "Curium"],
-      "correctIndex": 0,
-      "category": "Science"
-    },
-    {
-      "id": "h13",
-      "question": "In what year did the Byzantine Empire fall to the Ottoman Turks?",
-      "options": ["1353", "1453", "1553", "1253"],
-      "correctIndex": 1,
-      "category": "History"
-    },
-    {
-      "id": "h14",
-      "question": "What is the half-life of Carbon-14?",
-      "options": ["573 years", "5,730 years", "57,300 years", "573,000 years"],
-      "correctIndex": 1,
-      "category": "Science"
-    },
-    {
-      "id": "h15",
-      "question": "Who proved Fermat's Last Theorem in 1995?",
-      "options": ["John Nash", "Andrew Wiles", "Grigori Perelman", "Paul Erdős"],
-      "correctIndex": 1,
-      "category": "Math"
-    }
-  ],
-  "expert": [
-    {
-      "id": "x01",
-      "question": "What is the approximate value of the Planck constant?",
-      "options": ["6.626 × 10⁻³⁴ J·s", "6.022 × 10²³ J·s", "1.602 × 10⁻¹⁹ J·s", "9.109 × 10⁻³¹ J·s"],
-      "correctIndex": 0,
-      "category": "Science"
-    },
-    {
-      "id": "x02",
-      "question": "What is the capital of Vanuatu?",
-      "options": ["Suva", "Port Vila", "Nuku'alofa", "Honiara"],
-      "correctIndex": 1,
-      "category": "Geography"
-    },
-    {
-      "id": "x03",
-      "question": "Who composed the opera 'Tristan und Isolde'?",
-      "options": ["Giuseppe Verdi", "Ludwig van Beethoven", "Richard Wagner", "Franz Liszt"],
-      "correctIndex": 2,
-      "category": "Music"
-    },
-    {
-      "id": "x04",
-      "question": "Which protein gives red blood cells their characteristic red color?",
-      "options": ["Myoglobin", "Chlorophyll", "Hemoglobin", "Melanin"],
-      "correctIndex": 2,
-      "category": "Science"
-    },
-    {
-      "id": "x05",
-      "question": "In 'One Hundred Years of Solitude', which author created the Buendía family saga?",
-      "options": ["Jorge Luis Borges", "Pablo Neruda", "Gabriel García Márquez", "Mario Vargas Llosa"],
-      "correctIndex": 2,
-      "category": "Literature"
-    },
-    {
-      "id": "x06",
-      "question": "What quantum number specifically describes the intrinsic angular momentum of a particle?",
-      "options": ["Principal quantum number", "Magnetic quantum number", "Azimuthal quantum number", "Spin quantum number"],
-      "correctIndex": 3,
-      "category": "Science"
-    },
-    {
-      "id": "x07",
-      "question": "The Battle of Adwa in 1896 saw which African nation defeat Italy to remain independent?",
-      "options": ["Sudan", "Somalia", "Ethiopia", "Eritrea"],
-      "correctIndex": 2,
-      "category": "History"
-    },
-    {
-      "id": "x08",
-      "question": "What is the name of the theorem stating that every even integer greater than 2 is the sum of two primes?",
-      "options": ["Riemann Hypothesis", "Goldbach's Conjecture", "Fermat's Last Theorem", "Poincaré Conjecture"],
-      "correctIndex": 1,
-      "category": "Math"
-    },
-    {
-      "id": "x09",
-      "question": "Which philosopher coined the term 'categorical imperative' as a basis for moral law?",
-      "options": ["David Hume", "John Locke", "Immanuel Kant", "Georg Hegel"],
-      "correctIndex": 2,
-      "category": "Philosophy"
-    },
-    {
-      "id": "x10",
-      "question": "What is the technical name for the condition where a star collapses under gravity but does not become a black hole?",
-      "options": ["White dwarf", "Neutron star", "Quasar", "Pulsar"],
-      "correctIndex": 1,
-      "category": "Science"
+      "id": "q10",
+      "question": "What fundamental limitation did researcher Kate Crawford identify regarding emotion recognition AI in her 2021 work \"Atlas of AI\"?",
+      "options": [
+        "That emotion AI systems consume too much processing power to be commercially viable at scale",
+        "That current emotion recognition systems are built on the flawed assumption that emotions map universally and consistently to facial expressions, ignoring cultural variation, context, and the work of psychologist Lisa Feldman Barrett showing emotions are constructed not universal",
+        "That affective computing cannot function without direct neural interface technology making all current implementations fundamentally inaccurate",
+        "That the legal frameworks governing data privacy make it impossible to collect sufficient emotional training data without violating GDPR in every major market"
+      ],
+      "correctIndex": 1
     }
   ]
 }

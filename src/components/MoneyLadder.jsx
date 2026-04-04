@@ -107,7 +107,7 @@ export default function MoneyLadder({ currentIndex, phase, wonAmount }) {
       {/* Bottom: safety net reminder */}
       <div className="px-4 py-3 border-t border-game-border/40">
         <p className="text-[10px] text-game-gold/60 ladder-amount text-center leading-tight">
-          ● Safety Nets: $1,000 &amp; $32,000
+          ● Safety Net: $1,000
         </p>
       </div>
     </aside>

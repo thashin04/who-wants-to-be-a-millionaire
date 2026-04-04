@@ -59,7 +59,7 @@ export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onD
         transition={{ delay: 0.9 }}
         className="text-game-textDim text-sm mb-1 max-w-xs"
       >
-        15 questions · 3 lifelines · $1,000,000 prize
+        10 questions · 3 lifelines · $1,000,000 prize
       </motion.p>
       <motion.p
         initial={{ opacity: 0 }}
@@ -67,7 +67,7 @@ export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onD
         transition={{ delay: 1.0 }}
         className="text-game-textDim/50 text-xs mb-8 max-w-xs"
       >
-        Safety nets at $1,000 and $32,000
+        Safety net at $1,000
       </motion.p>
 
       {/* ── Play button ──────────────────────────────────────────────── */}

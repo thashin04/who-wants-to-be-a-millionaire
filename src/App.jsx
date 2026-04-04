@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
+import { useState, useRef } from 'react';
 import { useGameState } from './hooks/useGameState';
 import { useWebcam } from './hooks/useWebcam';
 import StartScreen from './components/StartScreen';
@@ -6,14 +7,18 @@ import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
 import MoneyLadder from './components/MoneyLadder';
 import CameraBackground from './components/CameraBackground';
+import { stopBg } from './utils/soundManager';
 
 export default function App() {
+  const [showCrash, setShowCrash] = useState(false);
+  const crashVideoRef = useRef(null);
+
   const {
     state,
     currentQuestion,
     getAnswerState,
     startGame,
-    selectAnswer,
+    selectAnswer: _selectAnswer,
     nextQuestion,
     walkAway,
     useFiftyFifty,
@@ -22,6 +27,15 @@ export default function App() {
     dismissLifeline,
     resetGame,
   } = useGameState();
+
+  function selectAnswer(i) {
+    if (state.currentIndex === 2) {
+      stopBg();
+      setShowCrash(true);
+      return;
+    }
+    _selectAnswer(i);
+  }
 
   const { videoRef, status: cameraStatus, startCamera, stopCamera } = useWebcam();
 
@@ -116,6 +130,18 @@ export default function App() {
         )}
 
       </div>
+
+      {/* ── Windows Crash Easter Egg ─────────────────────────────── */}
+      {showCrash && (
+        <div className="absolute inset-0 z-50 bg-black">
+          <video
+            ref={crashVideoRef}
+            src="/image/windows_crash.mp4"
+            autoPlay
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
     </div>
   );
 }

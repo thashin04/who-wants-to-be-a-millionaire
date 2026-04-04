@@ -8,7 +8,7 @@ const _bg = new Howl({
 });
 
 const _sfx = {
-  selectAnswer: new Howl({ src: ['/sounds/final_answer.mp3'], volume: 0.8, html5: true }),
+  selectAnswer: new Howl({ src: ['/sounds/final_answer.mp3'], volume: 0.5, html5: true }),
   win:          new Howl({ src: ['/sounds/correct.mp3'],      volume: 1.0, html5: true }),
   lose:         new Howl({ src: ['/sounds/wrong.mp3'],        volume: 1.0, html5: true }),
 };
@@ -38,3 +38,13 @@ export function playSfx(key) {
 // Keep these exports so useGameState.js doesn't break — they're now no-ops
 export function playBg_unused() {}
 export function bgForLevel() { return null; }
+
+// Pause all audio when tab is hidden, resume background when visible again
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    _bg.pause();
+    Object.values(_sfx).forEach(s => s.pause());
+  } else {
+    if (_bg.seek() > 0) _bg.play();
+  }
+});

@@ -136,7 +136,7 @@ export default function App() {
         <div className="absolute inset-0 z-50 bg-black">
           <video
             ref={crashVideoRef}
-            src="/image/windows_crash.mp4"
+            src="/image/windows_crash.mov"
             autoPlay
             className="w-full h-full object-cover"
           />

@@ -138,6 +138,7 @@ export default function App() {
             ref={crashVideoRef}
             src="/image/windows_crash.mov"
             autoPlay
+            preload="auto"
             className="w-full h-full object-cover"
           />
         </div>

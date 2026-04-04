@@ -65,42 +65,42 @@ export default function GameScreen({
           )}
         </AnimatePresence>
 
-        {/* ── "Continue" button after correct answer ────── */}
-        <AnimatePresence>
-          {phase === 'correct' && (
-            <motion.button
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ delay: 0.6, duration: 0.3 }}
-              onClick={nextQuestion}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-6 px-10 py-3 rounded-full font-bold text-base text-black"
-              style={{
-                background: 'linear-gradient(135deg, #00E676 0%, #00C853 100%)',
-                boxShadow: '0 0 24px rgba(0,230,118,0.5)',
-              }}
-            >
-              Next Question →
-            </motion.button>
-          )}
-        </AnimatePresence>
-
-        {/* ── Pending dramatic pause message ────────────── */}
-        <AnimatePresence>
-          {phase === 'pending' && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 0.6, 1] }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mt-4 text-game-orange text-sm font-semibold tracking-widest uppercase"
-            >
-              Final Answer...
-            </motion.p>
-          )}
-        </AnimatePresence>
+        {/* ── Fixed-height slot — prevents layout shift when these appear ── */}
+        <div className="h-14 flex items-center justify-center mt-2">
+          <AnimatePresence>
+            {phase === 'correct' && (
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.6, duration: 0.3 }}
+                onClick={nextQuestion}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-3 rounded-full font-bold text-base text-black"
+                style={{
+                  background: 'linear-gradient(135deg, #00E676 0%, #00C853 100%)',
+                  boxShadow: '0 0 24px rgba(0,230,118,0.5)',
+                }}
+              >
+                Next Question →
+              </motion.button>
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
+            {phase === 'pending' && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0.6, 1] }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-game-orange text-sm font-semibold tracking-widest uppercase"
+              >
+                Final Answer...
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* ── Lifeline Modals ─────────────────────────────── */}

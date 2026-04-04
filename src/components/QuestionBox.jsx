@@ -19,7 +19,7 @@ export default function QuestionBox({ question, questionIndex }) {
         {/* Question number */}
         <div className="flex items-center justify-center gap-2 mb-3">
           <span className="text-game-textDim text-xs font-medium tracking-widest uppercase">
-            Question {questionIndex + 1} of 15
+            Question {questionIndex + 1} of 10
           </span>
           <span className="text-game-textDim/40 text-xs">·</span>
           <span className="text-game-textDim/60 text-xs uppercase tracking-widest">

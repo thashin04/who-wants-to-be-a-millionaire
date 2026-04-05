@@ -77,7 +77,7 @@ export default function GameScreen({
                 onClick={nextQuestion}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-10 py-3 rounded-full font-bold text-base text-black"
+                className="px-10 py-3 rounded-full mt-20  font-bold text-base text-black"
                 style={{
                   background: 'linear-gradient(135deg, #00E676 0%, #00C853 100%)',
                   boxShadow: '0 0 24px rgba(0,230,118,0.5)',

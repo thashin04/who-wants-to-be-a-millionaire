@@ -4,7 +4,7 @@ import { useGameState } from './hooks/useGameState';
 import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
 import MoneyLadder from './components/MoneyLadder';
-import { killAll, stopStartTheme } from './utils/soundManager';
+import { killAll, stopStartTheme, playBgQuiet } from './utils/soundManager';
 
 // intro flow: 'warning' → click → 'video' → video ends → 'done' → click → game starts
 const INTRO_WARNING = 'warning';
@@ -46,6 +46,7 @@ export default function App() {
 
   function handleIntroVideoEnd() {
     setIntroState(INTRO_DONE);
+    playBgQuiet();
   }
 
   function handleEndScreenClick() {

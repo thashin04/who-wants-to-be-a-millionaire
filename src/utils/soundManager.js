@@ -56,9 +56,20 @@ export function killAll() {
   Object.values(_sfx).forEach(s => { s.mute(true); s.stop(); });
 }
 
+export function playBgQuiet() {
+  if (_killed) return;
+  _bg.volume(0.1);
+  if (!_bg.playing()) _bg.play();
+}
+
 export function playBg() {
   if (_killed) return;
-  if (!_bg.playing()) _bg.play();
+  if (_bg.playing()) {
+    _bg.fade(_bg.volume(), 0.5, 800);
+  } else {
+    _bg.volume(0.5);
+    _bg.play();
+  }
 }
 
 export function stopBg() {

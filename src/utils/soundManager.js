@@ -3,14 +3,14 @@ import { Howl } from 'howler';
 const _startTheme = new Howl({
   src: ['/sounds/start_theme.mp3'],
   loop: true,
-  volume: 0.5,
+  volume: 0.25,
   html5: true,
 });
 
 const _bg = new Howl({
   src: ['/sounds/bg_music.mp3'],
   loop: true,
-  volume: 0.5,
+  volume: 0.25,
   html5: true,
 });
 
@@ -65,9 +65,9 @@ export function playBgQuiet() {
 export function playBg() {
   if (_killed) return;
   if (_bg.playing()) {
-    _bg.fade(_bg.volume(), 0.5, 800);
+    _bg.fade(_bg.volume(), 0.25, 800);
   } else {
-    _bg.volume(0.5);
+    _bg.volume(0.25);
     _bg.play();
   }
 }

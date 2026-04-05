@@ -12,12 +12,16 @@ const INTRO_VIDEO   = 'video';
 const INTRO_DONE    = 'done';
 
 export default function App() {
-  const [introState, setIntroState] = useState(INTRO_WARNING);
-  const [showCrash, setShowCrash]   = useState(false);
-  const [showThanks, setShowThanks] = useState(false);
-  const introVideoRef = useRef(null);
-  const crashVideoRef = useRef(null);
-  const endingAudioRef = useRef(null);
+  const [introState, setIntroState]       = useState(INTRO_WARNING);
+  const [showCrash, setShowCrash]         = useState(false);
+  const [showJumpScare, setShowJumpScare] = useState(false);
+  const [jumpScarePlaying, setJumpScarePlaying] = useState(false);
+  const [showThanks, setShowThanks]       = useState(false);
+
+  const introVideoRef    = useRef(null);
+  const crashVideoRef    = useRef(null);
+  const jumpScareVideoRef = useRef(null);
+  const endingAudioRef   = useRef(null);
 
   const {
     state,
@@ -49,21 +53,43 @@ export default function App() {
     playBgQuiet();
   }
 
-  function handleEndScreenClick() {
-    killAll();
-    setShowThanks(true);
-    if (endingAudioRef.current) {
-      endingAudioRef.current.play();
-    }
-  }
-
   function selectAnswer(i) {
     if (state.currentIndex === 2) {
       killAll();
       setShowCrash(true);
+      // After 1 minute on crash screen → switch to jump scare
+      setTimeout(() => {
+        setShowCrash(false);
+        setShowJumpScare(true);
+      }, 60000);
       return;
     }
     _selectAnswer(i);
+  }
+
+  function handleJumpScareClick() {
+    if (!jumpScarePlaying && jumpScareVideoRef.current) {
+      jumpScareVideoRef.current.play();
+      setJumpScarePlaying(true);
+    }
+  }
+
+  function handleJumpScareEnd() {
+    // After 1 minute on frozen jump scare → show thank you screen
+    setTimeout(() => {
+      setShowJumpScare(false);
+      setShowThanks(true);
+    }, 60000);
+  }
+
+  function handleEndScreenClick() {
+    killAll();
+    setShowThanks(true);
+    if (endingAudioRef.current) endingAudioRef.current.play();
+  }
+
+  function handleThanksClick() {
+    if (endingAudioRef.current) endingAudioRef.current.play();
   }
 
   const { phase, currentIndex, wonAmount } = state;
@@ -77,7 +103,7 @@ export default function App() {
       {/* Preload ending audio */}
       <audio ref={endingAudioRef} src="/sounds/ending sound.mp3" preload="auto" />
 
-      {/* ── Intro overlay (shown while phase === 'start') ────────────── */}
+      {/* ── Intro overlay ────────────────────────────────────────────── */}
       {phase === 'start' && (
         <div
           className="absolute inset-0 z-30 cursor-pointer"
@@ -179,9 +205,41 @@ export default function App() {
         />
       )}
 
+      {/* ── Windows Crash ─────────────────────────────────────────── */}
+      {showCrash && (
+        <div className="absolute inset-0 z-50 bg-black">
+          <video
+            ref={crashVideoRef}
+            src="/image/windows_crash.mov"
+            autoPlay
+            preload="auto"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      )}
+
+      {/* ── Jump Scare ────────────────────────────────────────────── */}
+      {showJumpScare && (
+        <div
+          className="absolute inset-0 z-50 bg-black cursor-pointer"
+          onClick={handleJumpScareClick}
+        >
+          <video
+            ref={jumpScareVideoRef}
+            src="/image/Jump Scare.mp4"
+            preload="auto"
+            onEnded={handleJumpScareEnd}
+            className="w-full h-full object-cover pointer-events-none"
+          />
+        </div>
+      )}
+
       {/* ── Thank You screen ─────────────────────────────────────────── */}
       {showThanks && (
-        <div className="absolute inset-0 z-40 bg-black">
+        <div
+          className="absolute inset-0 z-40 bg-black cursor-pointer"
+          onClick={handleThanksClick}
+        >
           <img
             src="/image/Thank you for watching! (1).png"
             alt="Thank you for watching"
@@ -190,21 +248,6 @@ export default function App() {
         </div>
       )}
 
-      {/* ── Windows Crash Easter Egg ─────────────────────────────── */}
-      {showCrash && !showThanks && (
-        <div
-          className="absolute inset-0 z-50 bg-black cursor-pointer"
-          onClick={handleEndScreenClick}
-        >
-          <video
-            ref={crashVideoRef}
-            src="/image/windows_crash.mov"
-            autoPlay
-            preload="auto"
-            className="w-full h-full object-cover pointer-events-none"
-          />
-        </div>
-      )}
     </div>
   );
 }

@@ -1,16 +1,6 @@
 import { motion } from 'framer-motion';
 
-/**
- * Props:
- *   onStart          — start the game
- *   cameraStatus     — from useWebcam
- *   onEnableCamera   — startCamera
- *   onDisableCamera  — stopCamera
- */
-export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onDisableCamera }) {
-  const camActive    = cameraStatus === 'active';
-  const camRequesting = cameraStatus === 'requesting';
-  const camError     = cameraStatus === 'denied' || cameraStatus === 'error';
+export default function StartScreen({ onStart }) {
 
   return (
     <motion.div
@@ -61,14 +51,7 @@ export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onD
       >
         10 questions · 3 lifelines · $1,000,000 prize
       </motion.p>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.0 }}
-        className="text-game-textDim/50 text-xs mb-8 max-w-xs"
-      >
-        Safety net at $1,000
-      </motion.p>
+
 
       {/* ── Play button ──────────────────────────────────────────────── */}
       <motion.button
@@ -78,7 +61,7 @@ export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onD
         whileHover={{ scale: 1.07 }}
         whileTap={{ scale: 0.95 }}
         onClick={onStart}
-        className="px-12 py-4 rounded-full font-bold text-lg text-black tracking-wide mb-6"
+        className="px-12 py-4 rounded-full mt-10 font-bold text-lg text-black tracking-wide mb-6"
         style={{
           background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%)',
           boxShadow: '0 0 30px rgba(255,215,0,0.5), 0 4px 20px rgba(255,140,0,0.4)',
@@ -86,40 +69,6 @@ export default function StartScreen({ onStart, cameraStatus, onEnableCamera, onD
       >
         Play Now
       </motion.button>
-
-      {/* ── Camera opt-in ─────────────────────────────────────────────── */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.3 }}
-        onClick={camActive ? onDisableCamera : onEnableCamera}
-        disabled={camRequesting || camError}
-        className="flex items-center gap-2 text-xs font-medium px-4 py-2 rounded-full transition-all"
-        style={{
-          border: '1px solid rgba(0,170,255,0.4)',
-          color: camActive ? '#FF6680' : '#00CCFF',
-          background: camActive ? 'rgba(255,23,68,0.08)' : 'rgba(0,170,255,0.08)',
-          opacity: (camRequesting || camError) ? 0.4 : 1,
-          cursor: (camRequesting || camError) ? 'not-allowed' : 'pointer',
-        }}
-      >
-        <span>{camActive ? '⏹' : '📷'}</span>
-        <span>
-          {camRequesting ? 'Starting camera…'
-           : camActive   ? 'Disable camera background'
-           : camError    ? 'Camera unavailable'
-           : 'Enable camera background'}
-        </span>
-      </motion.button>
-
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="text-game-textDim/30 text-[10px] mt-6"
-      >
-        A class presentation project — inspired by the original TV show
-      </motion.p>
     </motion.div>
   );
 }

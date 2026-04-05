@@ -1,5 +1,12 @@
 import { Howl } from 'howler';
 
+const _startTheme = new Howl({
+  src: ['/sounds/start_theme.mp3'],
+  loop: true,
+  volume: 0.5,
+  html5: true,
+});
+
 const _bg = new Howl({
   src: ['/sounds/bg_music.mp3'],
   loop: true,
@@ -15,10 +22,35 @@ const _sfx = {
 
 export function initSounds() {}
 
+// ── Start screen theme ────────────────────────────────────────────────────────
+
+export function playStartTheme() {
+  if (!_startTheme.playing()) _startTheme.play();
+}
+
+export function stopStartTheme() {
+  _startTheme.stop();
+}
+
+// Start theme on first user interaction (browsers block autoplay before this)
+function _onFirstInteraction() {
+  playStartTheme();
+  document.removeEventListener('click',      _onFirstInteraction);
+  document.removeEventListener('keydown',    _onFirstInteraction);
+  document.removeEventListener('touchstart', _onFirstInteraction);
+}
+document.addEventListener('click',      _onFirstInteraction);
+document.addEventListener('keydown',    _onFirstInteraction);
+document.addEventListener('touchstart', _onFirstInteraction);
+
+// ── Game audio ────────────────────────────────────────────────────────────────
+
 let _killed = false;
 
 export function killAll() {
   _killed = true;
+  _startTheme.mute(true);
+  _startTheme.stop();
   _bg.mute(true);
   _bg.stop();
   Object.values(_sfx).forEach(s => { s.mute(true); s.stop(); });
@@ -34,27 +66,25 @@ export function stopBg() {
 }
 
 export function playSfx(key) {
-  // Stop background before win/lose stings so they don't overlap
-  if (key === 'win' || key === 'lose') {
-    _bg.stop();
-  }
+  if (_killed) return;
+  if (key === 'win' || key === 'lose') _bg.stop();
   const sound = _sfx[key];
-  if (sound) {
-    sound.stop();
-    sound.play();
-  }
+  if (sound) { sound.stop(); sound.play(); }
 }
 
-// Keep these exports so useGameState.js doesn't break — they're now no-ops
 export function playBg_unused() {}
 export function bgForLevel() { return null; }
 
-// Pause all audio when tab is hidden, resume background when visible again
+// Pause all audio when tab is hidden, resume when visible again
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) {
+    _startTheme.pause();
     _bg.pause();
     Object.values(_sfx).forEach(s => s.pause());
   } else {
-    if (_bg.seek() > 0) _bg.play();
+    if (!_killed) {
+      if (_startTheme.seek() > 0) _startTheme.play();
+      if (_bg.seek() > 0) _bg.play();
+    }
   }
 });

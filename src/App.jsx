@@ -1,13 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useRef } from 'react';
 import { useGameState } from './hooks/useGameState';
-import { useWebcam } from './hooks/useWebcam';
 import StartScreen from './components/StartScreen';
 import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
 import MoneyLadder from './components/MoneyLadder';
-import CameraBackground from './components/CameraBackground';
-import { killAll } from './utils/soundManager';
+import { killAll, stopStartTheme } from './utils/soundManager';
 
 export default function App() {
   const [showCrash, setShowCrash] = useState(false);
@@ -17,7 +15,7 @@ export default function App() {
     state,
     currentQuestion,
     getAnswerState,
-    startGame,
+    startGame: _startGame,
     selectAnswer: _selectAnswer,
     nextQuestion,
     walkAway,
@@ -28,6 +26,11 @@ export default function App() {
     resetGame,
   } = useGameState();
 
+  function startGame() {
+    stopStartTheme();
+    _startGame();
+  }
+
   function selectAnswer(i) {
     if (state.currentIndex === 2) {
       killAll();
@@ -37,27 +40,15 @@ export default function App() {
     _selectAnswer(i);
   }
 
-  const { videoRef, status: cameraStatus, startCamera, stopCamera } = useWebcam();
-
   const { phase, currentIndex, wonAmount } = state;
 
   const isPlaying = phase !== 'start' && phase !== 'won' && phase !== 'wrong' && phase !== 'walkaway';
   const isEnded   = phase === 'won' || phase === 'wrong' || phase === 'walkaway';
 
   return (
-    /* Outermost shell — provides the opaque navy base colour and houses
-       the camera background layers (z-0, z-1) beneath everything else. */
     <div style={{ position: 'relative', height: '100vh', overflow: 'hidden', background: '#010B2E' }}>
 
-      {/* ── Camera Background (z-0 video, z-1 blur overlay) ─────────── */}
-      <CameraBackground
-        videoRef={videoRef}
-        cameraStatus={cameraStatus}
-        onEnable={startCamera}
-        onDisable={stopCamera}
-      />
-
-      {/* ── Game UI (z-2, sits above camera layers) ─────────────────── */}
+      {/* ── Game UI ─────────────────────────────────────────────────── */}
       <div className="game-bg game-content-layer h-screen flex overflow-hidden">
 
         {/* Main content column */}
@@ -67,12 +58,7 @@ export default function App() {
             {/* START SCREEN */}
             {phase === 'start' && (
               <motion.div key="start" className="flex-1 flex flex-col" exit={{ opacity: 0 }}>
-                <StartScreen
-                  onStart={startGame}
-                  cameraStatus={cameraStatus}
-                  onEnableCamera={startCamera}
-                  onDisableCamera={stopCamera}
-                />
+                <StartScreen onStart={startGame} />
               </motion.div>
             )}
 

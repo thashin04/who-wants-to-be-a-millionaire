@@ -59,6 +59,7 @@ export default function GameScreen({
                   answerState={getAnswerState(i)}
                   onClick={() => selectAnswer(i)}
                   disabled={answersLocked}
+
                 />
               ))}
             </motion.div>

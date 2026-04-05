@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useGameState } from './hooks/useGameState';
 import GameScreen from './components/GameScreen';
 import EndScreen from './components/EndScreen';
@@ -91,6 +91,24 @@ export default function App() {
   function handleThanksClick() {
     if (endingAudioRef.current) endingAudioRef.current.play();
   }
+
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.code !== 'Space') return;
+      e.preventDefault();
+      // Overlays take priority over game phase
+      if (showThanks)                                 { handleThanksClick(); return; }
+      if (showJumpScare)                              { handleJumpScareClick(); return; }
+      if (showCrash)                                  { return; } // crash screen — do nothing, wait for timer
+      if (phase === 'start')                          { handleIntroClick(); return; }
+      if (phase === 'question' && currentQuestion)    { selectAnswer(currentQuestion.correctIndex); return; }
+      if (phase === 'correct')                        { nextQuestion(); return; }
+      if (isEnded && !showThanks)                     { handleEndScreenClick(); return; }
+    }
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  });
+
 
   const { phase, currentIndex, wonAmount } = state;
 

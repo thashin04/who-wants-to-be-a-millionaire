@@ -244,7 +244,7 @@ export default function App() {
         >
           <video
             ref={jumpScareVideoRef}
-            src="/image/Jump Scare.mp4"
+            src="/image/Jump_Scare.mp4"
             preload="auto"
             onEnded={handleJumpScareEnd}
             className="w-full h-full object-cover pointer-events-none"
